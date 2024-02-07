@@ -3,70 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taschenrechner</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.webmanifest">
-    <style>
-
-        
-
-
-    </style>
-
-    <script>
-function appendOperation(operation) {
-    document.getElementById('resultArea').innerHTML +=operation; 
-}
-
-
-
-    function calculateResult(){
-        let container = document.getElementById('resultArea');
-let result = eval(container.innerHTML);
-        container.innerHTML = result;
-    }
-    </script>
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
- <div id="resultArea"></div>
 
+<div id="pinEntry" class="pin-entry">
+    <h2>Enter PIN</h2>
+    <input type="password" id="pinInput" placeholder="Enter your PIN">
+    <button onclick="checkPIN()">Submit</button>
+</div>
 
-    
-    
+<div id="appContent" style="display: none;">
+    <header>Password Manager</header>
 
+    <div id="writeSection" class="section">
+        <h2>Write</h2>
+        <div class="input-container">
+            <input required id="passwordInput" type="password" placeholder="Password">
+            <input id="emailInput" type="email" placeholder="Email (Optional)">
+        </div>
+        <button onclick="saveData()">Save</button>
+    </div>
 
+    <nav>
+        <button id="savedBtn" onclick="showSavedPasswords()">Saved Passwords</button>
+    </nav>
 
-
-
-<table>
-<TR>
-    <td onclick="appendOperation(7)">7</td>
-    <td onclick="appendOperation(8)">8</td>
-    <td onclick="appendOperation(9)">9</td>
-    <td onclick="appendOperation(' / ')" class="highlight" <td>/</td>
-</TR>
-<TR>
-    <td onclick="appendOperation(4)">4</td>
-    <td onclick="appendOperation(5)">5</td>
-    <td onclick="appendOperation(6)">6</td>
-    <td onclick="appendOperation(' * ')" class="highlight" <td>x</td>
-</TR>
-<TR>
-    <td onclick="appendOperation(1)">1</td>
-    <td onclick="appendOperation(2)">2</td>
-    <td onclick="appendOperation(3)">3</td>
-    <td onclick="appendOperation(' + ')" class="highlight"  <td>+</td>
-    <TR>
-        <td onclick="appendOperation(0)">0</td>
-        <td onclick="appendOperation(' . ')">,</td>
-        <td onclick="calculateResult()" id="result">=</td>
-        <td onclick="appendOperation(' - ')" class="highlight"  <td>-</td>
-    </TR>
-</TR>
-</table>
+    <div id="savedSection" class="section" style="display: none;">
+        <h2>Saved Passwords</h2>
+        <ul id="savedData" class="saved-data">
+            <!-- Saved passwords will be displayed here -->
+        </ul>
+    </div>
+</div>
 
 </body>
 </html>
